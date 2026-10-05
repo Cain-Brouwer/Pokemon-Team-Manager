@@ -1,13 +1,26 @@
-import axios from "axios";
+import { useState, useEffect } from 'react';
 
-export default async function PokemonPage() {
-    try {
-        const response = await axios.get("https://pokeapi.co/api/v2/pokemon/", {
-            headers: {Authorization: "Bearer JOUW_API_KEY"}
-        });
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
+export default function PokemonPage() {
+    function App() {
+        const [data, setData] = useState(null);
+        const [error, setError] = useState(null);
+        const [loading, setLoading] = useState(true);
+
+        useEffect(() => {
+            fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
+                .then(res => {
+                    if (!res.ok) throw new Error('Network error');
+                    return res.json();
+                })
+                .then(setData)
+                .catch(setError)
+                .finally(() => setLoading(false));
+        }, []);
+
+        if (loading) return <p>Laden...</p>;
+        if (error) return <p>Fout: {error.message}</p>;
+
+        return <pre>{JSON.stringify(data, null, 2)}</pre>;
     }
-    return <div>Pokemon overzicht</div>;
+    return <div>Pokemon overzicht < App></App></div>;
 }
