@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function PokemonPage() {
+export default function PokemonApi() {
     function App() {
         const [data, setData] = useState(null);
         const [error, setError] = useState(null);

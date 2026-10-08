@@ -1,4 +1,4 @@
-let navbarItems = {"Home": "Teams: ", "Pokemon:": ""};
+let navbarItems = {"Home": "Teams", "Pokemon": "Detail"};
 
 function Header() {
     return (
@@ -6,7 +6,7 @@ function Header() {
             <div className="ml-8">
                 <h1 className="text-xl font-bold">PTM</h1>
             </div>
-            <div id="navbar" className="flex flex-col gap-2">
+            <div id="navbar" className="flex flex-col gap-2 items-center">
                 {Object.entries(navbarItems).map(([key, value]) => (
                     <div key={key} className="flex flex-row items-center gap-2">
                         <p className="text-sm font-bold">{key}</p>

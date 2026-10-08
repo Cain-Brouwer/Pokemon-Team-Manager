@@ -1,3 +1,7 @@
-import PokemonPage from "../api/PokemonApi.jsx";
+import PokemonApi from "../api/PokemonApi.jsx";
 
-PokemonPage()
+
+
+export default function PokemonPage() {
+    return <PokemonApi />;
+}
