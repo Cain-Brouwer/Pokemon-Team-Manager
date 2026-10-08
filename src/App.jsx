@@ -1,12 +1,12 @@
 import './App.css'
 import { Routes, Route } from "react-router-dom";
-import Hero from './components/Hero.jsx'
-import Footer from './components/Footer.jsx'
-import Header from "./components/Header.jsx";
-import Teams from './teams/page.jsx';
-import Pokemon from './pokemon/page.jsx';
-import Home from './home/page.jsx';
-import Detail from './detail/page.jsx';
+import Hero from './components/layout/Hero.jsx'
+import Footer from './components/layout/Footer.jsx'
+import Header from "./components/layout/Header.jsx";
+import Teams from './pages/teams/TeamsPage.jsx';
+import Pokemon from './pages/pokemon/PokemonPage.jsx';
+import Home from './pages/home/HomePage.jsx';
+import Detail from './pages/detail/DetailPage.jsx';
 
 
 function App() {

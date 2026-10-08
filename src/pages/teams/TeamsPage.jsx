@@ -1,3 +1,3 @@
-export default function teamsPage() {
+export default function TeamsPage() {
     return <div>Teams overzicht</div>;
 }
