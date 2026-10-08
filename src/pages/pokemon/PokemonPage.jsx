@@ -1,5 +1,6 @@
 import PokemonApi from "../../api/PokemonApi.jsx";
+import PokemonCard from "../../components/pokemon/PokemonCard.jsx";
 
 export default function PokemonPage() {
-    return <PokemonApi />;
+    return <div><PokemonCard /> <PokemonApi /></div>;
 }
