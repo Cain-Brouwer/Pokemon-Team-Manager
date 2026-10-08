@@ -1,6 +1,10 @@
-let navbarItems = {"Home": "", "Teams": "", "Pokemon": "", "Detail": ""};
+import { Link, useLocation } from "react-router-dom";
+
+let navbarItems = {"Home": "/", "Teams": "/teams", "Pokemon": "/pokemon", "Detail": "/detail"};
 
 function Header() {
+    const { pathname } = useLocation();
+
     return (
         <div className="w-full bg-white border-b border-slate-200 px-10 py-5">
             <div className="flex flex-row items-center justify-between">
@@ -10,8 +14,17 @@ function Header() {
                 <div id="navbar" className="flex flex-row items-center gap-8">
                     {Object.entries(navbarItems).map(([key, value]) => (
                         <div key={key} className="flex flex-row items-center gap-2">
-                            <p className="text-base font-semibold text-blue-600">{key}</p>
-                            <p className="text-base font-medium text-slate-500">{value}</p>
+                            <Link
+                                to={value}
+                                aria-current={pathname === value ? "page" : undefined}
+                                className={`text-base font-semibold transition-colors ${
+                                    pathname === value
+                                        ? "text-blue-600"
+                                        : "text-slate-500 hover:text-slate-900"
+                                }`}
+                            >
+                                {key}
+                            </Link>
                         </div>
                     ))}
                 </div>
