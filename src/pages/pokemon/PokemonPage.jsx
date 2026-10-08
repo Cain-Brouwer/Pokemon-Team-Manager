@@ -1,10 +1,5 @@
-import PokemonList from "../../components/pokemon/PokemonList.jsx";
+import PokemonApi from "../../api/PokemonApi.jsx";
 
 export default function PokemonPage() {
-    return (
-        <div>
-            Pokemon overzicht
-            <PokemonList />
-        </div>
-    );
+    return <PokemonApi />;
 }
