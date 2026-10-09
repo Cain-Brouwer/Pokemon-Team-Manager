@@ -20,9 +20,12 @@ export default function PokemonCard({pokemon}) {
         </div>
         <h2 className="mt-3 text-base font-semibold text-slate-900">{pokemon.name}</h2>
         <ul className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
-                {pokemon.types.map(
-                    (type) => <li key={type.type.name}>{type.type.name}<span aria-hidden="true" className="not-last:hidden">&nbsp;/&nbsp;</span></li>
-                )}
+            {pokemon.types.map(
+                (type, index) => <li key={type.type.name}>{type.type.name}
+                    {index < pokemon.types.length - 1 && (
+                        <span aria-hidden="true" className="not-last:hidden">&nbsp;/&nbsp;</span>)}
+                </li>
+            )}
         </ul>
     </div>
 }
