@@ -1,6 +1,6 @@
-import HomeHero from "../../components/home/HomePage.jsx";
+import HomeHero from "../components/home/HomeComponent.jsx";
 
-export default function HomePage() {
+export default function Home() {
     return (
         <main className="w-full bg-white">
             <HomeHero />

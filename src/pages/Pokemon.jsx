@@ -1,7 +1,7 @@
-import usePokemonData from "../../hooks/usePokemonData.js";
-import PokemonCard from "../../components/pokemon/PokemonCard.jsx";
+import usePokemonData from "../hooks/usePokemonData.js";
+import PokemonCard from "../components/pokemon/PokemonCard.jsx";
 
-export default function PokemonPage() {
+export default function Pokemon() {
     const {data, loading, error} = usePokemonData();
 
     if (loading) return <div>Loading...</div>;

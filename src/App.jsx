@@ -3,10 +3,10 @@ import {Routes, Route} from "react-router-dom";
 import Hero from './components/layout/Hero.jsx'
 import Footer from './components/layout/Footer.jsx'
 import Header from "./components/layout/Header.jsx";
-import Teams from './pages/teams/TeamsPage.jsx';
-import Pokemon from './pages/pokemon/PokemonPage.jsx';
-import Home from './pages/home/HomePage.jsx';
-import Detail from './pages/detail/DetailPage.jsx';
+import Teams from './pages/TeamsPage.jsx';
+import Pokemon from './pages/Pokemon.jsx';
+import Home from './pages/Home.jsx';
+import Detail from './pages/Detail.jsx';
 
 
 function App() {

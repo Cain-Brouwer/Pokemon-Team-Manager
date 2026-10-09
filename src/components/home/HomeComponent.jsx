@@ -1,4 +1,4 @@
-function HomePage() {
+function HomeComponent() {
     return (
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-2 py-20 lg:grid-cols-2">
             <div className="flex flex-col items-start gap-6">
@@ -33,4 +33,4 @@ function HomePage() {
     );
 }
 
-export default HomePage
+export default HomeComponent
