@@ -4,16 +4,15 @@ export default function usePokemonData() {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    let pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("https://pokeapi.co/api/v2/pokemon/3");
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                const result = await response.json();
-                setData(result);
+                const urls = pokemonIds.map(id => `https://pokeapi.co/api/v2/pokemon/${id}`)
+                const responses = await Promise.all(urls.map(url => fetch(url)));
+                const results = await Promise.all(responses.map(response => response.json()));
+                setData(results);
             } catch (error) {
                 setError(error);
             } finally {
@@ -21,7 +20,6 @@ export default function usePokemonData() {
             }
         };
         fetchData();
-    }, []);
-
-    return { data, loading, error };
+    }, [])
+    return {data, loading, error};
 }
