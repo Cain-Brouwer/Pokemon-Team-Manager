@@ -4,7 +4,7 @@ export default function usePokemonData() {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    let pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    let pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     useEffect(() => {
         const fetchData = async () => {
