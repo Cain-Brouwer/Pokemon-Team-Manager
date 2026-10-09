@@ -7,5 +7,4 @@ export default function PokemonPage() {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
-    return <div><PokemonCard/></div>;
-}
+    return <div><PokemonCard pokemon={data}/></div>;}
