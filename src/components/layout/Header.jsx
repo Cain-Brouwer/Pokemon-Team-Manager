@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-let navbarItems = {"Home": "/", "Teams": "/teams", "Pokemon": "/pokemon", "Detail": "/detail"};
+let navbarItems = {"Home": "/", "Teams": "/teams", "Pokemon": "/pokemon"};
 
 function Header() {
     const { pathname } = useLocation();

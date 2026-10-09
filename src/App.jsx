@@ -20,8 +20,7 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path={"/teams"} element={<Teams/>}/>
                     <Route path={"/pokemon"} element={<Pokemon/>}/>
-                    <Route path={"/detail"} element={<Detail/>}/>
-                    <Route path="/pokemon/:name" element={<Detail/>}/>
+                    <Route path="/detail/:name" element={<Detail/>}/>
                 </Routes>
             </div>
             <Footer/>
