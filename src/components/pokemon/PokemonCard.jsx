@@ -1,11 +1,15 @@
+import {Link} from "react-router-dom";
+
 export default function PokemonCard({pokemon}) {
     return <div className="rounded-2xl border border-slate-200 bg-white p-3 transition-colors hover:border-slate-300">
         <div className="relative rounded-xl bg-slate-100 p-6">
-            <img
-                src={pokemon.sprites.front_default}
-                alt={pokemon.name}
-                className="mx-auto aspect-3/2 w-full object-contain"
-            />
+            <Link to={`/detail/${pokemon.name}`}>
+                <img
+                    src={pokemon.sprites.front_default}
+                    alt={pokemon.name}
+                    className="mx-auto aspect-3/2 w-full object-contain"
+                />
+            </Link>
             <button
                 type="button"
                 aria-label={`Favorite ${pokemon.name}`}
