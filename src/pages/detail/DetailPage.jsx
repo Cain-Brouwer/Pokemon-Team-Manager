@@ -4,6 +4,8 @@ import usePokemonDetail from "../../hooks/usePokemonDetail.js";
 export default function DetailPage() {
     const {name} = useParams();
 
+    // const pokemon = usePokemonDetail(pokemon.name);
+
     return <div>
         {/*<img*/}
         {/*    src={pokemon.sprites.front_default}*/}

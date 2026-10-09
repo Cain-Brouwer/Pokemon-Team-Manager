@@ -13,7 +13,9 @@ export default function usePokemonDetail() {
         }
         const fetchData = async () => {
             try {
-                await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+                const results = await response.json();
+                setData(results);
             }
             catch {
                 setError(error);
