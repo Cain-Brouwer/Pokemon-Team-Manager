@@ -5,9 +5,9 @@ import PaginationDiv from "../components/pokemon/PaginationDiv.jsx";
 
 export default function Pokemon() {
   const { data, loading, error } = usePokemonData();
-  const [currentPage, setCurrentPage] = useState(1);
-  const ItemsPerPage = 8;
-  const totalPages = Math.ceil(data.length / ItemsPerPage);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const ItemsPerPage = 8;
+  // const totalPages = Math.ceil(data.length / ItemsPerPage);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
