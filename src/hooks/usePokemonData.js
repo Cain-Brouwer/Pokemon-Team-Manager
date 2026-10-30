@@ -8,7 +8,7 @@ export default function usePokemonData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://pokeapi.co/api/v2/pokemon/`;
+        const url = `https://pokeapi.co/api/v2/pokemon?limit=20`;
         const response = await fetch(url);
         const results = await response.json();
         setData(results);
