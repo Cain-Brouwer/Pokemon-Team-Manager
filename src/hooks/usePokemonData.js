@@ -8,17 +8,18 @@ export default function usePokemonData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://pokeapi.co/api/v2/pokemon?limit=20`;
+        const urlList = "https://pokeapi.co/api/v2/pokemon?limit=100";
+        const responseList = await fetch(urlList);
+        const resultsList = await responseList.json();
+
+        const url = `https://pokeapi.co/api/v2/pokemon/${resultsList.results.map((pokemon) => pokemon.name)}`;
         const response = await fetch(url);
         const results = await response.json();
         setData(results);
       } catch (error) {
         setError(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchData();
   }, []);
-  return { data, loading, error };
 }
