@@ -7,6 +7,7 @@ import Teams from "./pages/Teams.jsx";
 import Pokemon from "./pages/Pokemon.jsx";
 import Home from "./pages/Home.jsx";
 import Detail from "./pages/Detail.jsx";
+import FavoritesProvider from "./components/FavoritesProvider.jsx";
 
 function App() {
   return (
@@ -14,12 +15,14 @@ function App() {
       <Hero />
       <Header />
       <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path={"/teams"} element={<Teams />} />
-          <Route path={"/pokemon"} element={<Pokemon />} />
-          <Route path="/detail/:name" element={<Detail />} />
-        </Routes>
+        <FavoritesProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path={"/teams"} element={<Teams />} />
+            <Route path={"/pokemon"} element={<Pokemon />} />
+            <Route path="/detail/:name" element={<Detail />} />
+          </Routes>
+        </FavoritesProvider>
       </div>
       <Footer />
     </div>
