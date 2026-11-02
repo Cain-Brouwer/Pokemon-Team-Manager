@@ -2,19 +2,16 @@ import TeamCard from "./TeamCard.jsx";
 
 export default function TeamList({
   teams,
-  editingTeamId,
-  openTeamId,
-  searchQuery,
   pokemonData,
+  openTeamId,
+  setOpenTeamId,
+  editingTeamId,
+  setEditingTeamId,
+  searchQuery,
+  setSearchQuery,
   onAddTeam,
   onRemoveTeam,
-  onToggleManage,
-  onStartEdit,
-  onSaveEdit,
-  onRenameTeam,
-  onSearchChange,
-  onRemoveMember,
-  onAddMember,
+  onUpdateTeam,
 }) {
   return (
     <section className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -41,14 +38,11 @@ export default function TeamList({
             isOpen={openTeamId === team.id}
             searchQuery={searchQuery}
             pokemonData={pokemonData}
-            onRemove={onRemoveTeam}
-            onToggleManage={onToggleManage}
-            onStartEdit={onStartEdit}
-            onSaveEdit={onSaveEdit}
-            onRename={onRenameTeam}
-            onSearchChange={onSearchChange}
-            onRemoveMember={onRemoveMember}
-            onAddMember={onAddMember}
+            setOpenTeamId={setOpenTeamId}
+            setEditingTeamId={setEditingTeamId}
+            setSearchQuery={setSearchQuery}
+            onRemoveTeam={onRemoveTeam}
+            onUpdateTeam={onUpdateTeam}
           />
         ))}
       </div>

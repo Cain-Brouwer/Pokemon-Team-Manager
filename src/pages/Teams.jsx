@@ -39,50 +39,18 @@ export default function Teams() {
   }
 
   function removeTeam(teamId) {
-    setTeams(teams.filter((t) => t.id !== teamId));
+    setTeams(teams.filter((team) => team.id !== teamId));
   }
 
-  function toggleManage(teamId) {
-    setOpenTeamId(openTeamId === teamId ? null : teamId);
+  function updateTeam(teamId, changes) {
+    setTeams(teams.map((team) => (team.id === teamId ? { ...team, ...changes } : team)));
   }
 
-  function startEdit(teamId) {
-    setEditingTeamId(teamId);
-  }
-
-  function saveEdit() {
-    setEditingTeamId(null);
-  }
-
-  function renameTeam(teamId, name) {
-    setTeams(teams.map((t) => (t.id === teamId ? { ...t, name } : t)));
-  }
-
-  function removeMember(teamId, memberIndex) {
-    setTeams(
-      teams.map((t) =>
-        t.id === teamId ? { ...t, members: t.members.filter((_, i) => i !== memberIndex) } : t,
-      ),
-    );
-  }
-
-  function addMember(teamId, name) {
-    setTeams(
-      teams.map((t) =>
-        t.id === teamId ? { ...t, members: [...t.members, name.toLowerCase()] } : t,
-      ),
-    );
-  }
-
-  function addFavoriteToTeam(poke) {
-    const nameLower = poke.name.toLowerCase();
-    const teamWithSpace = teams.find((t) => t.members.length < 6);
-    if (teamWithSpace && !teamWithSpace.members.includes(nameLower)) {
-      setTeams(
-        teams.map((t) =>
-          t.id === teamWithSpace.id ? { ...t, members: [...t.members, nameLower] } : t,
-        ),
-      );
+  function addFavoriteToTeam(pokemon) {
+    const name = pokemon.name.toLowerCase();
+    const team = teams.find((team) => team.members.length < 6);
+    if (team && !team.members.includes(name)) {
+      updateTeam(team.id, { members: [...team.members, name] });
     }
   }
 
@@ -94,19 +62,16 @@ export default function Teams() {
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12">
           <TeamList
             teams={teams}
-            editingTeamId={editingTeamId}
-            openTeamId={openTeamId}
-            searchQuery={searchQuery}
             pokemonData={pokemonData}
+            openTeamId={openTeamId}
+            setOpenTeamId={setOpenTeamId}
+            editingTeamId={editingTeamId}
+            setEditingTeamId={setEditingTeamId}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
             onAddTeam={addTeam}
             onRemoveTeam={removeTeam}
-            onToggleManage={toggleManage}
-            onStartEdit={startEdit}
-            onSaveEdit={saveEdit}
-            onRenameTeam={renameTeam}
-            onSearchChange={setSearchQuery}
-            onRemoveMember={removeMember}
-            onAddMember={addMember}
+            onUpdateTeam={updateTeam}
           />
 
           <FavoritesPanel

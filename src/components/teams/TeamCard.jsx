@@ -1,4 +1,4 @@
-import TeamManager from "./TeamManager.jsx";
+import TeamPanel from "./TeamPanel.jsx";
 
 export default function TeamCard({
   team,
@@ -7,15 +7,14 @@ export default function TeamCard({
   isOpen,
   searchQuery,
   pokemonData,
-  onRemove,
-  onToggleManage,
-  onStartEdit,
-  onSaveEdit,
-  onRename,
-  onSearchChange,
-  onRemoveMember,
-  onAddMember,
+  setOpenTeamId,
+  setEditingTeamId,
+  setSearchQuery,
+  onRemoveTeam,
+  onUpdateTeam,
 }) {
+  const isFull = team.members.length === 6;
+
   return (
     <div className="py-5">
       <div className="flex items-center gap-4">
@@ -27,7 +26,7 @@ export default function TeamCard({
             <input
               type="text"
               value={team.name}
-              onChange={(e) => onRename(team.id, e.target.value)}
+              onChange={(e) => onUpdateTeam(team.id, { name: e.target.value })}
               className="w-full rounded-lg border border-slate-200 px-3 py-2 text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           ) : (
@@ -48,13 +47,13 @@ export default function TeamCard({
           )}
         </div>
         <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${team.members.length === 6 ? "bg-blue-50 text-blue-700" : "bg-slate-100 text-slate-600"}`}
+          className={`rounded-full px-3 py-1 text-xs font-semibold ${isFull ? "bg-blue-50 text-blue-700" : "bg-slate-100 text-slate-600"}`}
         >
-          {team.members.length === 6 ? "Active" : "Draft"}
+          {isFull ? "Active" : "Draft"}
         </span>
         <button
           type="button"
-          onClick={() => onRemove(team.id)}
+          onClick={() => onRemoveTeam(team.id)}
           className="rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-600 transition-colors hover:bg-red-100"
           aria-label={`Verwijder ${team.name}`}
         >
@@ -62,14 +61,14 @@ export default function TeamCard({
         </button>
         <button
           type="button"
-          onClick={() => onToggleManage(team.id)}
+          onClick={() => setOpenTeamId(isOpen ? null : team.id)}
           className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50"
         >
           Beheer
         </button>
         <button
           type="button"
-          onClick={() => onStartEdit(team.id)}
+          onClick={() => setEditingTeamId(team.id)}
           className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-50"
         >
           Wijzig
@@ -77,7 +76,7 @@ export default function TeamCard({
         {isEditing && (
           <button
             type="button"
-            onClick={onSaveEdit}
+            onClick={() => setEditingTeamId(null)}
             className="rounded-xl border border-green-200 bg-green-50 px-4 py-2 text-sm font-semibold text-green-700 transition-colors hover:bg-green-100"
           >
             Opslaan
@@ -86,13 +85,12 @@ export default function TeamCard({
       </div>
 
       {isOpen && (
-        <TeamManager
+        <TeamPanel
           team={team}
           searchQuery={searchQuery}
           pokemonData={pokemonData}
-          onSearchChange={onSearchChange}
-          onRemoveMember={onRemoveMember}
-          onAddMember={onAddMember}
+          setSearchQuery={setSearchQuery}
+          onUpdateTeam={onUpdateTeam}
         />
       )}
     </div>
