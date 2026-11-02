@@ -12,7 +12,6 @@ export default function usePokemonData() {
         const responseList = await fetch(urlList);
         const resultsList = await responseList.json();
 
-        const url = `https://pokeapi.co/api/v2/pokemon/${resultsList.results.map((pokemon) => pokemon.name)}`;
         const response = await Promise.all(
           resultsList.results.map((pokemon) =>
             fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`),
@@ -25,12 +24,8 @@ export default function usePokemonData() {
       } finally {
         setLoading(false);
       }
-      return () => {
-        setData(null);
-        setLoading(true);
-        setError(null);
-      };
     };
     fetchData();
   }, []);
+  return { data, loading, error };
 }
