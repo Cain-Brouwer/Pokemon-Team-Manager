@@ -11,9 +11,7 @@ export default function Pokemon() {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  const pokemonList = data.results.map((pokemon) => (
-    <PokemonCard key={pokemon.name} pokemon={pokemon} />
-  ));
+  const pokemonList = data.map((pokemon) => <PokemonCard key={pokemon.name} pokemon={pokemon} />);
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 p-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
