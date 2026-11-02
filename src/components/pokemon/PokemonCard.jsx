@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FavoritesContext } from "../FavoritesProvider";
 
 export default function PokemonCard({ pokemon }) {
+  const { favorites, toggleFavorite } = useContext(FavoritesContext);
+  const isFavorite = favorites.includes(pokemon.name);
+  const favoriteButtonClass = isFavorite ? "text-amber-400" : "text-slate-400";
+  const favoriteButtonBackgroundClass = isFavorite ? "bg-amber-100" : "bg-white";
+  const favoriteButtonIconClass = isFavorite ? "★" : "☆";
+  const favoriteButtonStyling = `absolute right-3 top-3 flex size-7 items-center justify-center rounded-full ${favoriteButtonBackgroundClass} text-sm ${favoriteButtonClass} shadow-sm transition-colors hover:text-amber-400`;
+
   return (
     <div
       className="rounded-2xl border border-slate-200
@@ -17,10 +26,10 @@ export default function PokemonCard({ pokemon }) {
         <button
           type="button"
           aria-label={`Favorite ${pokemon.name}`}
-          className="absolute right-3 top-3 flex size-7 items-center justify-center rounded-full
-                 bg-white text-sm text-slate-400 shadow-sm transition-colors hover:text-amber-400"
+          className={favoriteButtonStyling}
+          onClick={() => toggleFavorite(pokemon.name)}
         >
-          ☆
+          {favoriteButtonIconClass}
         </button>
       </div>
       <h2 className="mt-3 text-base font-semibold text-slate-900">{pokemon.name}</h2>
