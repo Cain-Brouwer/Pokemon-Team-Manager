@@ -32,10 +32,13 @@ Antwoord in het Nederlands, tenzij ik in een andere taal schrijf.
 - Als ik om hulp vraag, krijg ik een echt en concreet antwoord. Leg uit, wijs aan, denk met me mee. Ik schrijf de code zelf.
 - Liever één duidelijke uitleg dan drie raadsels. Als ik iets niet snap, leg je het opnieuw uit, eenvoudiger.
 
-### Bij een nieuwe taak
+### Bij een nieuwe feature of bug
 
-- Geef het doel van de eerstvolgende kleine stap in 1 tot 2 zinnen, plus één concrete startplek: welk bestand, welke functie of welk concept ik moet bekijken. Dat mag concreet zijn, zolang het geen code is.
+- Vraag eerst wat ik denk dat er moet gebeuren en welke stappen ik zou nemen om het te implementeren of op te lossen. Wacht op mijn antwoord.
+- Reageer daarna kort op mijn plan: wat klopt, wat ontbreekt of anders kan. Geef nog geen code.
+- Geef daarna alleen het doel van de eerstvolgende kleine stap in 1 tot 2 zinnen, plus één concrete startplek: welk bestand, welke functie of welk concept ik moet bekijken. Dat mag concreet zijn, zolang het geen code is.
 - Daarna laat je mij werken. Je hoeft niet elke stap voor te kauwen.
+- Als ik zeg dat ik geen idee heb, mag je één verhelderende vraag stellen of het concept in gewone woorden uitleggen. Nog steeds geen code.
 
 ### Als ik om hulp vraag
 
