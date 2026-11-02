@@ -8,11 +8,11 @@ export default function PokemonCard({ pokemon }) {
     >
       <div className="relative rounded-xl bg-slate-100 p-6">
         <Link to={`/detail/${pokemon.name}`}>
-          {/*<img*/}
-          {/*    src={pokemon.sprites.front_default}*/}
-          {/*    alt={pokemon.name}*/}
-          {/*    className="mx-auto aspect-3/2 w-full object-contain"*/}
-          {/*/>*/}
+          <img
+            src={pokemon.sprites.front_default}
+            alt={pokemon.name}
+            className="mx-auto aspect-3/2 w-full object-contain"
+          />
         </Link>
         <button
           type="button"
@@ -24,14 +24,18 @@ export default function PokemonCard({ pokemon }) {
         </button>
       </div>
       <h2 className="mt-3 text-base font-semibold text-slate-900">{pokemon.name}</h2>
-      {/*<ul className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">*/}
-      {/*    {pokemon.types.map(*/}
-      {/*        (type, index) => <li key={type.type.name}>{type.type.name}*/}
-      {/*            {index < pokemon.types.length - 1 && (*/}
-      {/*                <span aria-hidden="true" className="not-last:hidden">&nbsp;/&nbsp;</span>)}*/}
-      {/*        </li>*/}
-      {/*    )}*/}
-      {/*</ul>*/}
+      <ul className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-500">
+        {pokemon.types.map((type, index) => (
+          <li key={type.type.name}>
+            {type.type.name}
+            {index < pokemon.types.length - 1 && (
+              <span aria-hidden="true" className="not-last:hidden">
+                &nbsp;/&nbsp;
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
