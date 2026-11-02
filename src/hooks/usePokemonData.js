@@ -8,7 +8,7 @@ export default function usePokemonData() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const urlList = "https://pokeapi.co/api/v2/pokemon?limit=100";
+        const urlList = "https://pokeapi.co/api/v2/pokemon?limit=151";
         const responseList = await fetch(urlList);
         const resultsList = await responseList.json();
 
